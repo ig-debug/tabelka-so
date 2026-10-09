@@ -114,9 +114,7 @@ function render(){
     c.innerHTML='<h2>Wiersz '+(i+1)+(rows.length>1?'<button class="link" data-del="'+i+'">Usuń</button>':'')+'</h2>'+
     '<div class="grid">'+
     fs(i)+f(i,"wf","Wind Farm")+
-    f(i,"tb","Turbina")+fd(i)+'</div>'+f(i,"nm","Wykonywana praca")+
-    '<details style="margin-top:10px"'+(rows[i].so?' open':'')+'><summary style="color:var(--mute);font-size:14px;padding:8px 0;cursor:pointer">Opcjonalnie: SO</summary>'+
-    f(i,"so","SO","numeric")+'</details>';
+    f(i,"tb","Turbina")+fd(i)+'</div>'+f(i,"nm","Wykonywana praca");
     box.appendChild(c);
   });
   preview();
