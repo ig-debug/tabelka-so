@@ -81,8 +81,7 @@ summary{list-style-position:inside}
       <button id="copytxt">Kopiuj jako tekst</button>
       <button id="mail">Otwórz maila</button>
     </div>
-    <button class="primary" id="outlook" style="width:100%;margin-top:8px">Otwórz w Outlooku</button>
-    <p class="hint">Najpierw „Kopiuj tabelę”, potem „Otwórz maila” lub „Otwórz w Outlooku” i wklej tabelę w treść.</p>
+    <p class="hint">Najpierw „Kopiuj tabelę”, potem „Otwórz maila” i wklej tabelę w treść.</p>
   </div>
 </main>
 
@@ -195,21 +194,6 @@ document.getElementById("mail").onclick=function(){
   var to=val("to"),s=val("subj"),t=val("tech");
   var subject=s+(t?" - "+t:"");
   location.href="mailto:"+encodeURIComponent(to).replace("%40","@")+"?subject="+encodeURIComponent(subject);
-};
-
-document.getElementById("outlook").onclick=function(){
-  var to=val("to"),s=val("subj"),t=val("tech");
-  var subject=s+(t?" - "+t:"");
-  var q="to="+encodeURIComponent(to)+"&subject="+encodeURIComponent(subject);
-  var done=false;
-  function stop(){done=true;}
-  document.addEventListener("visibilitychange",stop,{once:true});
-  window.addEventListener("pagehide",stop,{once:true});
-  window.addEventListener("blur",stop,{once:true});
-  setTimeout(function(){
-    if(!done&&!document.hidden){window.open("https://outlook.office.com/mail/deeplink/compose?"+q,"_blank");}
-  },1500);
-  location.href="ms-outlook://compose?"+q;
 };
 
 load();render();
